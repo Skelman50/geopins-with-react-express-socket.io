@@ -1,10 +1,11 @@
-.blog-root .no-content-root {
+.no-content-root {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
   }
 
-  .blog-root .no-content-icon {
-    font-size: 80px
+  .no-content-icon {
+    font-size: 80px;
+    display: inline-block;
   }

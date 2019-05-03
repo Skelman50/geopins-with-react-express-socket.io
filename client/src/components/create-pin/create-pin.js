@@ -11,7 +11,7 @@ import PinsApiService from '../../services/pins-api-service/pins-api-service';
 
 const pinsApiService = new PinsApiService();
 
-const CreatePin = ({ setHeight }) => {
+const CreatePin = () => {
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
   const [content, setContent] = useState('');
@@ -29,7 +29,6 @@ const CreatePin = ({ setHeight }) => {
         title, image: url, content, latitude, longitude,
       };
       const createPin = await pinsApiService.createNewPin(data);
-      setHeight('90%');
       handleClearButton();
       subscribeOnCreatePin(createPin);
     } catch (error) {

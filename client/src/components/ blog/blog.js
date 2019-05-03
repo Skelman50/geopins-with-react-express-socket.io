@@ -7,7 +7,7 @@ import CreatePin from '../create-pin/create-pin';
 import './blog.css';
 import PinContent from '../pin-content/pin-content';
 
-const Blog = ({ setHeight }) => {
+const Blog = () => {
   const { state } = useContext(Context);
   const { draft, currentPin } = state;
   const mobileSize = useMediaQuery('(max-width: 650px)');
@@ -15,7 +15,7 @@ const Blog = ({ setHeight }) => {
     if (!draft && !currentPin) {
       return <NoContent />;
     } if (draft && !currentPin) {
-      return <CreatePin setHeight={setHeight} />;
+      return <CreatePin />;
     } if (!draft && currentPin) {
       return <PinContent />;
     }
@@ -23,7 +23,7 @@ const Blog = ({ setHeight }) => {
 
 
   return (
-    <Paper
+      <Paper
       className={mobileSize ? 'blog-root-mobile' : 'blog-root'}
     >
       {getBlogContent()}

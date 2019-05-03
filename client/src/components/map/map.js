@@ -28,7 +28,6 @@ const Map = () => {
   const [viewPort, setViewPort] = useState(INITIAL_VIEWPORT);
   const [userPosition, setUserPosition] = useState(null);
   const [popup, setPopup] = useState(null);
-  const [heightMap, setHeight] = useState('90%');
   const { state, dispatch } = useContext(Context);
 
   const mobileSize = useMediaQuery('(max-width: 650px)');
@@ -44,7 +43,6 @@ const Map = () => {
   };
 
   const handleMapClick = ({ lngLat, leftButton }) => {
-    setHeight('70%');
     setPopup(null);
     if (!state.draft) {
       dispatch({ type: 'CREATE_DRAFT' });
@@ -54,7 +52,6 @@ const Map = () => {
   };
 
   const handleSelectedPin = (pin) => {
-    setHeight('70%');
     setPopup(null);
     setTimeout(() => {
       setPopup(pin);
@@ -63,7 +60,6 @@ const Map = () => {
   };
 
   const handleDeletePin = async () => {
-    setHeight('90%');
     const deletedPin = await deletePin(popup._id);
     socketDeletePin(deletedPin);
   };
@@ -86,7 +82,6 @@ const Map = () => {
   const isAuthUser = () => state.currentUser._id === popup.author._id;
 
   const handleClosePin = () => {
-    setHeight('90%');
     setPopup(null);
     dispatch({ type: 'CLOSE_POPUP_PIN' });
   };
@@ -102,7 +97,6 @@ const Map = () => {
     }, []);
 
   useEffect(() => {
-    setHeight(heightMap);
     setTimeout(() => {
       const pinExist = popup && state.pins.findIndex(pin => pin._id === popup._id) > -1;
       if (!pinExist) {
@@ -112,18 +106,12 @@ const Map = () => {
     // eslint-disable-next-line
     }, [state.pins.length])
 
-  const styleMap = {
-    height: mobileSize ? heightMap : 'calc(100vh - 74px)',
-    width: mobileSize ? '100%' : '66%',
-  };
-
   return (
     <div className={mobileSize ? 'map-root-mobile' : 'map-root'}>
-      <div style={styleMap}>
         <ReactMapGl
           mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
           width="100%"
-          height="100%"
+          height="calc(100vh - 74px)"
           mapStyle="mapbox://styles/mapbox/streets-v9"
           {...viewPort}
           onViewportChange={newViewport => setViewPort(newViewport)}
@@ -134,12 +122,12 @@ const Map = () => {
           <MapMarker draft={userPosition} color="red" />
           <MapMarker draft={state.draft} color="hotpink" />
           <PinsHistory pins={state.pins} highlightNewPin={highlightNewPin} handleSelectedPin={handleSelectedPin} />
-          <div>
+          
             <PopupPin popup={popup} handleClosePin={handleClosePin} isAuthUser={isAuthUser} handleDeletePin={handleDeletePin} />
-          </div>
+          
         </ReactMapGl>
-      </div>
-      <Blog setHeight={setHeight} />
+      
+      <Blog />
     </div>
   );
 };

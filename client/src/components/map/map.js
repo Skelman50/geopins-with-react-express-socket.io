@@ -12,20 +12,14 @@ import PinsApiService from '../../services/pins-api-service/pins-api-service';
 import PinsHistory from '../pins-history/pins-history';
 import PopupPin from '../popup-pin/popup-pin';
 import dotenv from 'dotenv';
+import Loader from '../loader/loader';
 
 dotenv.config();
 
 const { getAllPins, deletePin } = new PinsApiService();
 
-const INITIAL_VIEWPORT = {
-  latitude: 37.7577,
-  longitude: -122.4376,
-  zoom: 13,
-};
-
-
 const Map = () => {
-  const [viewPort, setViewPort] = useState(INITIAL_VIEWPORT);
+  const [viewPort, setViewPort] = useState(null);
   const [userPosition, setUserPosition] = useState(null);
   const [popup, setPopup] = useState(null);
   const { state, dispatch } = useContext(Context);
@@ -34,11 +28,11 @@ const Map = () => {
 
   const getUserPosition = () => {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const { latitude, longitude } = position.coords;
-        setViewPort({ ...viewPort, latitude, longitude });
-        setUserPosition({ latitude, longitude });
-      });
+          navigator.geolocation.getCurrentPosition((position) => {
+          const { latitude, longitude } = position.coords;
+          setViewPort({ ...{}, latitude, longitude, zoom: 13 });
+          setUserPosition({ latitude, longitude });
+        });
     }
   };
 
@@ -106,9 +100,14 @@ const Map = () => {
     // eslint-disable-next-line
     }, [state.pins.length])
 
+
+    if (!viewPort) {
+      return <Loader />
+    }
+
   return (
     <div className={mobileSize ? 'map-root-mobile' : 'map-root'}>
-        <ReactMapGl
+          <ReactMapGl
           mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
           width="100%"
           height="calc(100vh - 74px)"
@@ -126,8 +125,8 @@ const Map = () => {
             <PopupPin popup={popup} handleClosePin={handleClosePin} isAuthUser={isAuthUser} handleDeletePin={handleDeletePin} />
           
         </ReactMapGl>
-      
-      <Blog />
+         <Blog />
+          
     </div>
   );
 };

@@ -16,7 +16,7 @@ const Root = () => {
 
   useEffect(() => {
     // eslint-disable-next-line
-    socket = io()
+    socket = io();
     dispatch({ type: 'SET_SOCKET', payload: socket });
   }, []);
 

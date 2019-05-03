@@ -1,0 +1,19 @@
+.create-comment-form {
+    display: flex;
+    align-items: center
+  }
+
+  .create-comment-input {
+    margin-left: 8px;
+    flex: 1;
+  }
+
+  .create-comment-form  .create-comment-clear-button {
+    padding: 0;
+    color: red;
+  }
+
+  .create-comment-form  .create-comment-send-button {
+    padding: 0;
+    color: lightseagreen;
+  }

@@ -1,0 +1,14 @@
+.root-signOut {
+    cursor: pointer;
+    display: flex;
+  }
+
+  .root-signOut .buttonText-sign-out {
+    color: orange;
+    font-size: 18px;
+  }
+
+  .buttonIcon-sign-out {
+    margin-left: 5px;
+    color: orange;
+  }

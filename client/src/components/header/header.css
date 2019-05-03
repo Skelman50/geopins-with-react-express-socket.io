@@ -1,0 +1,25 @@
+    .root-header {
+      flex-grow: 1;
+    }
+
+    .grow {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .grow .icon {
+      margin-right: 25px;
+      color: green;
+      font-size: 45px;
+    }
+
+    .grow .mobile {
+      display: none
+    }
+
+    .picture {
+      height: 50px;
+      border-radius: 90%;
+      margin-right: 25px
+    }

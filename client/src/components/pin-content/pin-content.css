@@ -1,0 +1,16 @@
+.root-pin-content {
+    padding: 1em 0.5em;
+    text-align: center;
+    width: 100%;
+  }
+
+  .pin-content-icon {
+    margin-left: 10px;
+    margin-right: 10px
+  }
+
+  .pin-content-text {
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }

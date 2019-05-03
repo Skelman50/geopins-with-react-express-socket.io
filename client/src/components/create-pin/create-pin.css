@@ -1,0 +1,45 @@
+.create-pin-root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
+
+  .create-pin-root .content-field-create-pin {
+    margin-left: 0;
+    margin-right: 0;
+    width: 95%
+  }
+
+  .create-pin-root .input-create-pin {
+    display: none
+  }
+
+  .create-pin-root .align-center-create-pin {
+    display: flex;
+    align-items: center
+  }
+
+  .create-pin-root .icon-large-create-pin {
+    font-size: 40;
+    margin-right: 0
+  }
+
+  .create-pin-root .left-icon-create-pin{
+    font-size: 20px;
+    margin-right: 35px;
+  }
+
+  .create-pin-root .right-icon-create-pin  {
+    font-size: 20px;
+    margin-left: 35px;
+  }
+
+
+  .create-pin-root .button-create-pin {
+    margin: 10px;
+    margin-left: 0;
+    text-align: center;
+    height: 45px;
+  }

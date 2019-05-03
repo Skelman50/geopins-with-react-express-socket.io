@@ -1,0 +1,50 @@
+body {
+  margin: 0
+}
+
+.map-root {
+    display: flex
+  }
+
+.map-root-mobile {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100vh;
+    overflow-y: hidden;
+  }
+
+.navigationControl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1em;
+  }
+
+.deleteIcon-map {
+    color: red
+  }
+
+.popupTab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .popup-image {
+    padding: 0.4em;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+  }
+
+  .popup-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .popup-delete-icon {
+    color: red
+  }

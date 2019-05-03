@@ -1,0 +1,11 @@
+.root-comments {
+    width: 100%;
+    background-color: white
+  }
+
+  .root-comments .comments-inline {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+    color: red
+  }

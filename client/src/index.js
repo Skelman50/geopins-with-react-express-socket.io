@@ -16,7 +16,7 @@ const Root = () => {
 
   useEffect(() => {
     // eslint-disable-next-line
-    socket = io('http://localhost:8080')
+    socket = io()
     dispatch({ type: 'SET_SOCKET', payload: socket });
   }, []);
 

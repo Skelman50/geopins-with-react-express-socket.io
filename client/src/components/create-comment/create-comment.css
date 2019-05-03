@@ -15,5 +15,6 @@
 
   .create-comment-form  .create-comment-send-button {
     padding: 0;
+    margin-right: 15px;
     color: lightseagreen;
   }
